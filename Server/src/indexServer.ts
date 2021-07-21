@@ -1,6 +1,8 @@
 import express , {Application, Request, Response, NextFunction} from 'express';
 import {connectDB} from './connectDb';
 import cors from 'cors';
+import {userLogin} from './userLogin';
+import {userSignup} from './userSignup';
 
 const app : Application = express();
 
@@ -27,8 +29,9 @@ async function start() : Promise<void> {
     }
 }
 
-// app.use(userSignup);
-// app.use(userLogin);
+app.use(userLogin);
+app.use(userSignup);
+
 start();
 
 

@@ -6,7 +6,6 @@ export async function connectDB() : Promise<void> {
     
     const connection_link : string = process.env.MONGODB_CONNECTION_LINK || "fake link";
     try{
-        console.log(connection_link);
         await connect(connection_link , {
             useNewUrlParser : true,
             useFindAndModify : false,

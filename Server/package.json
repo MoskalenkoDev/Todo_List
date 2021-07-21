@@ -5,13 +5,14 @@
   "main": "indexServer.js",
   "scripts": {
     "start": "node dist/indexServer.js",
-    "dev" : "nodemon src/indexServer.ts",
-    "build" : "tsc -p ."
+    "dev": "nodemon src/indexServer.ts",
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
