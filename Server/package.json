@@ -2,17 +2,17 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "indexServer.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "node dist/indexServer.js",
-    "dev": "nodemon src/indexServer.ts",
+    "start": "node dist/app.js",
+    "dev": "nodemon app.ts",
     "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/cors": "^2.8.12",
+    "@types/md5": "^2.3.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -21,6 +21,7 @@
     "mongoose": "^5.12.10"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^16.3.3",
     "nodemon": "^2.0.12",
