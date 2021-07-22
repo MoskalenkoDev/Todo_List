@@ -1,5 +1,5 @@
 import {Request , Response} from 'express';
-import {user} from './schemas/userSchema';
+import {User} from './schemas/userSchema';
 import crypto from 'crypto';
 
 export const userLogin = async (req: Request, res: Response) : Promise<void> => {
@@ -8,7 +8,7 @@ export const userLogin = async (req: Request, res: Response) : Promise<void> => 
 
         const {email, password} : {email : string, password : string} = req.body;
 
-        await user.find({"email" : email ,"password" : password}).exec((err, foundUser) => {
+        await User.find({"email" : email ,"password" : password}).exec((err, foundUser) => {
             return foundUser.length !== 0 ? res.sendStatus(200) : res.status(404).send("User is not registered");
         });
 
@@ -25,13 +25,13 @@ export const userSignUp = async (req: Request, res: Response) : Promise<void> =>
 
         const {email, password} : {email : string , password : string} = req.body;
 
-        await user.find({"email" : email}).exec(async(err, foundUser) => {
+        await User.find({"email" : email}).exec(async(err, foundUser) => {
 
             if(foundUser.length !== 0) return res.status(403).send("Account is already exist");
             else {
                 
                 const encodedPassword = crypto.pbkdf2Sync(password, process.env.SALT || "unknownSalt", 1000, 64, 'sha512').toString('hex');
-                const newUser = new user({
+                const newUser = new User({
                     email,
                     password : encodedPassword
                 });
