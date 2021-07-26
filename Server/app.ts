@@ -2,7 +2,9 @@ import express , {Application} from 'express';
 import {connect} from 'mongoose';
 import {config} from 'dotenv';
 import cors from 'cors';
-import {router} from './user/controller';
+import {userRouter} from './user/controller';
+import {toDoRouter} from './todoList/controller';
+
 config();
 const app : Application = express();
 
@@ -37,6 +39,7 @@ const start = async() : Promise<void> => {
     }
 }
 
-app.use(router);
+app.use(userRouter);
+app.use(toDoRouter);
 
 start();
